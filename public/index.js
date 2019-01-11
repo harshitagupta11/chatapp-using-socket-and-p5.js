@@ -18,7 +18,7 @@ function setup() {
     feedback = select('#feedback');
 
     send.mousePressed(sendMessage);
-    //socket.on('chat', msgs);
+    socket.on('chat', msgs);
 }
 
 function sendMessage() {
@@ -29,12 +29,14 @@ function sendMessage() {
     };
     console.log(data.message);
     socket.emit('chat', data);
-    socket.on('chat', msgs);
+    //socket.on('chat', msgs);
 
-    function msgs(data) {
-        // var msg = createP(data.handle);
-        //msg.html(data.handle);
-        //msg.parent('output');
-        output.html("<p><strong>" + data.handle + ":</strong>" + data.message + "</p>", true);
-    }
+
+}
+
+function msgs(data) {
+    // var msg = createP(data.handle);
+    //msg.html(data.handle);
+    //msg.parent('output');
+    output.html("<p><strong>" + data.handle + ":</strong>" + data.message + "</p>", true);
 }
