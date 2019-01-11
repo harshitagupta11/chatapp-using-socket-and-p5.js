@@ -10,7 +10,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('chat', chatmsg);
 
     function chatmsg(data) {
-        sockets.broadcast.emit('chat', data);
+        io.sockets.emit('chat', data);
         console.log('emits');
     }
 });
